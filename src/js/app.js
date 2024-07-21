@@ -1,4 +1,4 @@
-export default function orderByProps(objectSort, arraySort = []) {
+export function orderByProps(objectSort, arraySort = []) {
 	let arr = [];
 	for (let key in objectSort) {
 		if (arraySort.indexOf(key) === -1) {
@@ -12,4 +12,19 @@ export default function orderByProps(objectSort, arraySort = []) {
 		result.push({ key, value: objectSort[key] });
 	}
 	return result;
+}
+
+export function specialAttack(character) {
+  const result = [];
+  character.special.forEach((num) => {
+    const {
+      name, id, icon, description = 'Описание недоступно',
+    } = num;
+
+    result.push({
+      name, id, icon, description,
+    });
+  });
+
+  return result;
 }

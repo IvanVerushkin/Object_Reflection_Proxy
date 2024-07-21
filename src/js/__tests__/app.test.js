@@ -1,5 +1,5 @@
 import orderByProps from '../app';
-
+import specialAttack from '../app';
 
 test('sort name level', () => {
   const obj = {
@@ -41,4 +41,44 @@ test('sort', () => {
     { key: 'name', value: 'мечник' },
   ];
   expect(orderByProps(obj)).toEqual(result);
+});
+
+
+const character = {
+  name: 'Лучник',
+  type: 'Bowman',
+  health: 50,
+  level: 3,
+  attack: 40,
+  defence: 10,
+  special: [
+    {
+      id: 8,
+      name: 'Двойной выстрел',
+      icon: 'http://...',
+      description: 'Двойной выстрел наносит двойной урон',
+    },
+    {
+      id: 9,
+      name: 'Нокаутирующий удар',
+      icon: 'http://...',
+    },
+  ],
+};
+
+test('array test', () => {
+  const expected = [{
+    id: 8,
+    name: 'Двойной выстрел',
+    icon: 'http://...',
+    description: 'Двойной выстрел наносит двойной урон',
+  },
+  {
+    id: 9,
+    name: 'Нокаутирующий удар',
+    icon: 'http://...',
+    description: 'Описание недоступно',
+  }];
+
+  expect(expected).toEqual(specialAttack(character));
 });
